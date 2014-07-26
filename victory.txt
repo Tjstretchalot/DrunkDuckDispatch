@@ -1,0 +1,6 @@
+Congratulations, you have led your favorite team 
+of ducks into victory!
+To reset the game, simply delete:
+player.json, entities_saved.json, misc.json, (optionally) achievements_acquired.json, and quests.json. 
+I also recommend you delete your app.log if you didn't notice
+any bugs so it doesn't keep growing on you.

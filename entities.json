@@ -1,0 +1,547 @@
+[
+  {
+    "image": "arrowgantcaptain.png",
+    "meta": {
+      "name": "???",
+      "debug_name": "arrowgant_captain",
+      "hover_message": "???",
+      "walk_message": "**Left-click to chat**",
+      "aggressive": false
+    },
+    "position": {
+      "x": 768,
+      "y": 512,
+      "width": 128,
+      "height": 128
+    },
+    "conversation": {
+      "text": [
+        { 
+          "msg": "[Him] It's too bad none of these waiters can get me another drink",
+          "choices": [
+            {
+              "msg": "Ignore him",
+              "end": true
+            },
+            {
+              "msg": "Tell him you aren't a waiter",
+              "jump-to": 1
+            }
+          ]
+        },
+        {
+          "msg": "[Him] Huh. Well I'm Arrow Gant, captain of the Gants. It is your honor to meet me."
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_LearnAboutGant"
+    },
+    "insistent": {
+      "text": [
+        {
+          "msg": "[Him] Well since you are being so insistent, I have lost some jewels recently that were extremely valuable. If you were to get them back, I would be most appreciative",
+          "choices": [
+            {
+              "msg": "Not interested",
+              "jump-to": 1
+            },
+            {
+              "msg": "I'll see what I can do",
+              "jump-to": 2
+            }
+          ]
+        },
+        {
+          "msg": "[Him] You aren't going to make it far in this world without me.",
+          "end": true
+        },
+        {
+          "msg": "[Him] I think they were taken while I was at the bar seating area; Since you have nothing better to do, perhaps you could ask around?",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_GantJewels"
+    },
+    "nojewelsyet": {
+      "text": [
+        {
+          "msg": "[Him] Any progress on the jewels?",
+          "choices": [
+            {
+              "msg": "Not yet",
+              "end": true
+            },
+            {
+              "msg": "Where did you\nlose them again?",
+              "jump-to": 1
+            }
+          ]
+        },
+        {
+          "msg": "[Him] Your tiny memory amuses me. They were stolen in the bar area directly south of us. If you ask around, I'm sure someone must have seen them.",
+          "end": true
+        }
+      ]
+    },
+    "acquired_jewels_nomatt": {
+      "text": [
+        {
+          "msg": "[Him] Any progress on the jewels?",
+          "choices": [
+            {
+              "msg": "Not yet",
+              "end": true
+            },
+            {
+              "msg": "Found them",
+              "jump-to": 1
+            }
+          ]
+        },
+        {
+          "msg": "As you approach him a strange power creeps over you. He seems like a fatherly figure, a real champ. You notice an army of archers grow around you but all you can focus on is Gant. The rest seems like a dream",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_GantJewels"
+    },
+    "acquired_jewels_withmatt": {
+    "text": [
+        {
+          "msg": "[Him] Any progress on the jewels?",
+          "choices": [
+            {
+              "msg": "Not yet",
+              "end": true
+            },
+            {
+              "msg": "Found them",
+              "jump-to": 1
+            }
+          ]
+        },
+        {
+          "msg": "As you approach him a strange power creeps over you. He seems like a fatherly figure, a real champ. You notice an army of archers grow around you but all you can focus on is Gant. The rest seems like a dream",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_GantJewels"
+    },
+    "gaveaway_jewels_but_havent_talked": {
+      "text": [
+        {
+          "msg": "[Him] Any progress on the jewels?",
+          "choices": [
+            {
+              "msg": "Not yet",
+              "end": true
+            },
+            {
+              "msg": "Can't find them\n(Blame Matt)",
+              "jump-to": 1
+            }
+          ]         
+        },
+        {
+          "msg": "[Him] This is simply absurd! I should never have trusted someone like yourself to do a mans work!",
+          "end": false
+        },
+        {
+          "msg": "[You] It's not my fault! Matt constantly pestered me and reported me at every chance. You don't think..",
+          "end": false
+        },
+        {
+          "msg": "[Him] The listecs are at it again! Tell Matt that things won't be looking good for him if he doesn't hand over the jewels",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_GantJewels"
+    },
+    "didnt_give_jewels": {
+      "text": [
+        {
+          "msg": "[Him] Go get my jewels!",
+          "end": true
+        }
+      ]
+    },
+    "helpingmatt": {
+      "text": [
+        {
+          "msg": "Before he gets a chance to notice you, you bit him in the eye with your beak and he falls back.",
+          "end": false
+        },
+        {
+          "msg": "You too, duck? Are the last words you here as you steal the necklace from his shoulders and the watch on his wing.",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_HelpMatt"
+    },
+    "post_stole_set": {
+      "text": [
+        {
+          "msg": "[Him] You made a huge mistake showing your face here again! (He stabs you)",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_HelpMatt"
+    },
+    
+    "stolejewelsforgant": {
+      "text": [
+        {
+          "msg": "As you near him you can feel the power of the set. All you seek is his approval now",
+          "end": false
+        },
+        {
+          "msg": "[You] Here you go",
+          "end": false
+        },
+        {
+          "msg": "[Him] Why am I surprised? Nobody can resist the persusasion the jewels give him, there the most important piece!",
+          "end": false
+        },
+        {
+          "msg": "[Him] My real name is Smith. (A smile creeps up on his face) (To the crowd of archers that suddenly appeared) Lets finish this!",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_HelpGant"
+    }
+  },
+  {
+    "image": "matterilistec.png",
+    "meta": {
+      "name": "???",
+      "debug_name": "listec_captain",
+      "hover_message": "???",
+      "walk_message": "",
+      "aggressive": false
+    },
+    "position": {
+      "x": 1408,
+      "y": 2048,
+      "width": 128,
+      "height": 128
+    },
+    "conversation": {
+      "text": [
+       {
+         "msg": "[Him] Got anything fancy to spare?",
+         "choices": [
+           {
+             "msg": "Ignore him",
+             "jump-to": 1
+           },
+           {
+             "msg": "Depends on the price",
+             "jump-to": 2
+           },
+           {
+             "msg": "Unfortunately, no",
+             "end": true
+           }
+         ]
+       },
+       {
+         "msg": "[Him] Not very social I see",
+         "end": true
+       },
+       {
+         "msg": "[Him] I like you. Bring me something and I'm sure we'll come to an arrangement. Name's Matt Eri Listec, captain of the listecs",
+         "choices": [
+           {
+             "msg": "Maybe later",
+             "end": true
+           },
+           {
+             "msg": "Unlikely",
+             "jump-to": 3
+           }
+         ]
+       },
+       {
+         "msg": "[Him] More likely than you might think",
+         "end": true
+       }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_LearnAboutMatt"
+    },
+    "given_jewels": {
+      "text": [
+        {
+          "msg": "[Him] Got anything new?",
+          "end": false
+        },
+        {
+          "msg": "[You] Not yet",
+          "end": true
+        }
+      ]
+    },
+    "being_blamed": {
+      "text": [
+        {
+          "msg": "[Him] Hello there!",
+          "choices": [
+            {
+              "msg": "Need jewels back\n(Lose Friendship)",
+              "jump-to": 1
+            },
+            {
+              "msg": "Ask for info\nabout jewels",
+              "jump-to": 3
+            },
+            {
+              "msg": "Tell him why\nyou're here",
+              "jump-to": 7
+            }
+          ]
+        },
+        {
+          "msg": "[Him] It is mighty hard to earn my friendship like you have. Are you sure you don't want to rephrase",
+          "choices": [
+            {
+              "msg": "Yes",
+              "jump-to": 2
+            },
+            {
+              "msg": "Actually, I just\nneed some info",
+              "jump-to": 3
+            }
+          ]
+        },
+        {
+          "msg": "Matt pulls out a sword and stabs you so quickly you cannot react. Maybe next time you won't blatantly his might!",
+          "end": true
+        },
+        {
+          "msg": "[Him] Curiousity killed the cat. However, I suppose I owe you one. These jewels are one part to a three-part piece that grants the wearer incredible persuasion",
+          "choices": [
+            {
+              "msg": "Where are the\nother pieces?",
+              "jump-to": 4
+            },
+            {
+              "msg": "Tell him why\nyou're here",
+              "jump-to": 7
+            }
+          ]
+        },
+        {
+          "msg": "[Him] A long time ago in a place much less pretty than here, both Gant and I ruled together with a massive following by using the full set of persuasion. However we inevitably got in a dispute, and the fight that came was absolutely horrible.. (He appears lost in memory)",
+          "choices": [
+            {
+              "msg": "Go on",
+              "jump-to": 5
+            },
+            {
+              "msg": "Tell him why\nyou're here",
+              "jump-to": 7
+            }
+          ]
+        },
+        {
+          "msg": "[Him] The war caused a huge split between those who had lost family members and loved ones, but eventually Gant came out on top. He was nearing my base when my son spent the last of his energy to cast a powerful spell on the jewels; Only those unaware of its power could see it",
+          "jump-to": 6
+        },
+        {
+          "msg": "[Him] However the spell fades away once someone has found it. However I still only hold 1 piece to the set and I am yet unable to take Gant in combat",
+          "choices": [
+            {
+              "msg": "Tell him why\nyou're here",
+              "jump-to": 7
+            },
+            {
+              "msg": "Agree to help\nhim defeat Gant",
+              "jump-to": 8
+            },
+            {
+              "msg": "How are you\nbetter than Gant?",
+              "jump-to": 9
+            }
+          ]
+        },
+        {
+          "msg": "[Him] I, too, was once decieved by Gant. I hope you will reconsider or I'm afraid I will treat you no differently than if he were to fight me unguarded",
+          "choices": [
+            {
+              "msg": "Agree to help\nhim defeat Gant",
+              "jump-to": 8
+            },
+            {
+              "msg": "How are you\nbetter than Gant?",
+              "jump-to": 9
+            }
+          ]
+        },
+        {
+          "msg": "[Him] This place has a spell that forces peace between the Gants and the Listecs. If you were to find a weapon and surprise Gant, you would surely win",
+          "end": true
+        },
+        {
+          "msg": "[Him] Have you met the guy? He would kill a hundred men for a soft drink! My hobby *waves at the myriad of trinkets around him* is much less intrusive",
+          "choices": [
+            {
+              "msg": "Agree to help\nhim defeat Gant",
+              "jump-to": 8
+            },
+            {
+              "msg": "Grab the jewels\nand run",
+              "end": true
+            }
+          ]
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_BlameMatt"
+    },
+    "poststolenjewels": {
+      "text": [
+        {
+          "msg": "[Him] There you are! (He stabs you in the chest. Why would you go back..?)"
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_BlameMatt"
+    },
+    "agreedtohelp": {
+      "text": [
+        {
+          "msg": "[Him] What are you still doing here? Surprise Gant, his instincts have no doubt faded over time",
+          "end": true
+        }
+      ]
+    },
+    "given_persuasion_set": {
+      "text": [
+        {
+          "msg": "As you hand him the jewels you can sense the power coming over you. You start to forget his past mistakes and only see him like a father.",
+          "end": false
+        },
+        {
+          "msg": "[Him] (To You): You've done well (To the rest of the crowd): Let us finish what we started, all those years ago!",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_HelpMatt"
+    }
+  },
+  {
+    "image": "jewels.png",
+    "position": {
+      "x": 3086,
+      "y": 2960,
+      "width": 64,
+      "height": 64
+    },
+    "meta": {
+      "name": "",
+      "debug_name": "jewels",
+      "hover_message": "This probably shouldn't be here",
+      "walk_message": "",
+      "aggressive": false,
+      "collectable": true
+    },
+    "conversation": {
+      "text": [
+        {
+          "msg": "Collected some shiny jewels",
+          "end": true
+        }
+      ]
+    }
+  },
+  {
+    "image": "bystander1.png",
+    "position": {
+      "x": 384,
+      "y": 2048,
+      "width": 96,
+      "height": 96
+    },
+    "meta": {
+      "name": "",
+      "debug_name": "bystander1",
+      "hover_message": "Minding his own business",
+      "walk_message": "",
+      "aggressive": false
+    },
+    "conversation": {
+      "text": [
+        {
+          "msg": "*He doesn't appear to notice you*",
+          "end": true
+        }
+      ]
+    },
+    "where_are_jewels": {
+      "text": [
+        {
+          "msg": "*He is staring studiously at his mug*",
+          "choices": [
+            {
+              "msg": "Ask about jewels",
+              "jump-to": 1
+            },
+            {
+              "msg": "Leave him alone",
+              "end": true
+            }
+          ]
+        },
+        {
+          "msg": "[Him] I think a waiter moved them off to the big seating area to the right so they wouldn't get stolen",
+          "choices": [
+            {
+              "msg": "Thank him and\nleave",
+              "end": true
+            },
+            {
+              "msg": "Make conversation",
+              "jump-to": 2
+            }
+          ]
+        },
+        {
+          "msg": "[You] Why are you all alone over here?"
+        },
+        {
+          "msg": "[Him] My dad is extremely famous so I can't go to public locations without security. If I want any freedom I have to go to places like this *waves at the exotic drinks behind the counter and beautiful chandelier*. However, everyone around here has a toxic personality"
+        },
+        {
+          "msg": "[Him] Here, have a drink with me and I'll tell you the whole story"
+        },
+        {
+          "msg": "[You] Maybe some other time",
+          "end": true
+        }
+      ],
+      "quest": "me.timothy.ddd.quests.Quest_RichSon"
+    },
+    "goodwill1": {
+      "text": [
+        {
+          "msg": "[Him] Hey pal, want that story yet?"
+        },
+        {
+          "msg": "[You] Sorry, still busy."
+        },
+        {
+          "msg": "[Him] So is the way of things. I wish you luck"
+        },
+        {
+          "msg": "[You] Thanks",
+          "end": true
+        }
+      ]
+    },
+    "standard": {
+      "text": [
+        {
+          "msg": "*Seems bored*",
+          "end": true
+        }
+      ]
+    }
+  }
+]
