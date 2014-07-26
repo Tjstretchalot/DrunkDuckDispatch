@@ -151,6 +151,15 @@ public class DrunkDuckDispatch extends StateBasedGame {
 			Resources.extractIfNotFound(lwjglDir, "lwjgl-2.9.1.zip", "lwjgl-2.9.1");
 			System.setProperty("org.lwjgl.librarypath", new File(dir, "lwjgl-2.9.1/lwjgl-2.9.1/native/" + os).getAbsolutePath()); // deal w/ it
 			System.setProperty("net.java.games.input.librarypath", System.getProperty("org.lwjgl.librarypath"));
+			
+			Resources.downloadIfNotExists("entities.json", "http://umad-barnyard.com/ddd/entities.json", 16142);
+			Resources.downloadIfNotExists("map.binary", "http://umad-barnyard.com/ddd/map.binary", 16142);
+			File resFolder = new File("resources/");
+			if(!resFolder.exists()) {
+				Resources.downloadIfNotExists("resources.zip", "http://umad-barnyard.com/ddd/resources.zip", 54484);
+				Resources.extractIfNotFound(new File("."), "resources.zip", "player-still.png");
+				new File("resources.zip").delete();
+			}
 			AppGameContainer appgc;
 			ddd = new DrunkDuckDispatch();
 			appgc = new AppGameContainer(ddd);

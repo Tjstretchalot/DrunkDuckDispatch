@@ -145,13 +145,13 @@ public class Resources {
 		
 	}
 
-	public static void extractIfNotFound(File lwjglDir, String zipFileStrInDir, String fileToSearchFor) {
+	public static void extractIfNotFound(File dir, String zipFileStrInDir, String fileToSearchFor) {
 		
 		
-		File toSearchFor = new File(lwjglDir, fileToSearchFor);
+		File toSearchFor = new File(dir, fileToSearchFor);
 		if(toSearchFor.exists())
 			return;
-		File zipFileReal = new File(lwjglDir, zipFileStrInDir);
+		File zipFileReal = new File(dir, zipFileStrInDir);
 		String zipFileStr = zipFileReal.getAbsolutePath();
 		// unzip http://www.devx.com/getHelpOn/10MinuteSolution/20447
 		try {
@@ -173,17 +173,17 @@ public class Resources {
 					// Assume directories are stored parents first then children.
 					logger.log(Level.DEBUG, "Extracting directory: " + entry.getName());
 					// This is not robust, just for demonstration purposes.
-					(new File(lwjglDir, entry.getName())).mkdir();
+					(new File(dir, entry.getName())).mkdir();
 					continue;
 				}
 
 				logger.log(Level.DEBUG, "Extracting file: " + entry.getName());
-				File resultingFile = new File(lwjglDir, entry.getName());
+				File resultingFile = new File(dir, entry.getName());
 				File resultFileDir = resultingFile.getParentFile();
 				if(!resultFileDir.exists())
 					resultFileDir.mkdirs();
 				copyInputStream(zipFile.getInputStream(entry),
-						new BufferedOutputStream(new FileOutputStream(new File(lwjglDir, entry.getName()))), entry.getSize(), false);
+						new BufferedOutputStream(new FileOutputStream(new File(dir, entry.getName()))), entry.getSize(), false);
 				progressBar.setValue((int) (progressBar.getValue() + entry.getCompressedSize()));
 			}
 			progressBar.setValue(progressBar.getMaximum());

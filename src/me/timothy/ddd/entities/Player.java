@@ -28,7 +28,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Player extends Entity {
-	private static final int SPEED_MULT = 10;
+	private static final int SPEED_MULT = 4;
 	private Logger logger;
 	private AchievementManager achievementManager;
 	private AstarPathfinding pathfinding;
