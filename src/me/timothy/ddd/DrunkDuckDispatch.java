@@ -154,11 +154,20 @@ public class DrunkDuckDispatch extends StateBasedGame {
 			
 			Resources.downloadIfNotExists("entities.json", "http://umad-barnyard.com/ddd/entities.json", 16142);
 			Resources.downloadIfNotExists("map.binary", "http://umad-barnyard.com/ddd/map.binary", 16142);
+			Resources.downloadIfNotExists("victory.txt", "http://umad-barnyard.com/ddd/victory.txt", 168);
+			Resources.downloadIfNotExists("failure.txt", "http://umad-barnyard.com/ddd/failure.txt", 321);
 			File resFolder = new File("resources/");
-			if(!resFolder.exists()) {
+			if(!resFolder.exists() && !new File("player-still.png").exists()) {
 				Resources.downloadIfNotExists("resources.zip", "http://umad-barnyard.com/ddd/resources.zip", 54484);
 				Resources.extractIfNotFound(new File("."), "resources.zip", "player-still.png");
 				new File("resources.zip").delete();
+			}
+			File soundFolder = new File("sounds/");
+			if(!soundFolder.exists()) {
+				soundFolder.mkdirs();
+				Resources.downloadIfNotExists("sounds/sounds.zip", "http://umad-barnyard.com/ddd/sounds.zip", 1984977);
+				Resources.extractIfNotFound(soundFolder, "sounds.zip", "asdfasdffadasdf");
+				new File(soundFolder, "sounds.zip").delete();
 			}
 			AppGameContainer appgc;
 			ddd = new DrunkDuckDispatch();

@@ -30,6 +30,7 @@ import me.timothy.ddd.entities.EntityPosition;
 import me.timothy.ddd.entities.Player;
 import me.timothy.ddd.map.GameMap;
 import me.timothy.ddd.quests.QuestManager;
+import me.timothy.ddd.resources.Resources;
 import me.timothy.ddd.scaling.SizeScaleSystem;
 
 import org.apache.logging.log4j.Level;
@@ -134,6 +135,7 @@ public class DDDGameState implements GameState {
 			nGoalY = bestY * GameMap.DEF_GRID_HEIGHT + 1;
 		}
 		// This will be stuck to the grid
+		Resources.getRandomAudio().playAsSoundEffect(1, 1, false);
 		player.setGoal(nGoalX, nGoalY);
 	}
 
@@ -172,6 +174,11 @@ public class DDDGameState implements GameState {
 			mapCenterX = 640;
 		if(mapCenterY < 512)
 			mapCenterY = 512;
+		
+		if(mapCenterX > 3456) 
+			mapCenterX = 3456;
+		if(mapCenterY > 5632)
+			mapCenterY = 5632;
 	}
 
 	@Override

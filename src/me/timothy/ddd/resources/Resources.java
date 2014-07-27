@@ -23,12 +23,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
+import java.util.Set;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -42,16 +45,23 @@ import org.apache.logging.log4j.Logger;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import org.newdawn.slick.openal.Audio;
+import org.newdawn.slick.openal.AudioLoader;
 
 public class Resources {
 	private static HashMap<String, Image> images;
 	private static HashMap<String, SpriteSheet> animations;
+	private static HashMap<String, Audio> sounds;
+	private static Random random;
+	
 	private static Logger logger;
 
 	public static void init() {
 		images = new HashMap<>();
 		animations = new HashMap<>();
+		sounds = new HashMap<>();
 		logger = LogManager.getLogger();
+		random = new Random();
 	}
 
 	public static void initRes() {
@@ -60,29 +70,33 @@ public class Resources {
 			List<File> toCheck = new ArrayList<>();
 			toCheck.addAll(Arrays.asList(new File(".").listFiles()));
 			toCheck.addAll(Arrays.asList(new File("resources").listFiles()));
+			toCheck.addAll(Arrays.asList(new File("sounds").listFiles()));
 			
 			for(File f : toCheck) {
-				if(f.isDirectory() || !f.getName().endsWith(".png"))
+				if(f.isDirectory())
 					continue;
-				
-				Image img = read(f);
-				if(f.getName().startsWith("couch-")) {
-					images.put(f.getName(), img);
-					images.put(f.getName() + "-inverted", img.getFlippedCopy(false, true));
-				}else if(f.getName().equals("arrowgant.png")) {
-					SpriteSheet sheet = new SpriteSheet(img, 4, 1);
-					animations.put("arrowgant", sheet);
-				}else if(f.getName().equals("swordman.png")) {
-					SpriteSheet sheet = new SpriteSheet(img, 3, 1);
-					animations.put("swordman", sheet);
-				}else {
-					images.put(f.getName(), img);
+				if(f.getName().endsWith("png")) {
+					Image img = read(f);
+					if(f.getName().startsWith("couch-")) {
+						images.put(f.getName(), img);
+						images.put(f.getName() + "-inverted", img.getFlippedCopy(false, true));
+					}else if(f.getName().equals("arrowgant.png")) {
+						SpriteSheet sheet = new SpriteSheet(img, 4, 1);
+						animations.put("arrowgant", sheet);
+					}else if(f.getName().equals("swordman.png")) {
+						SpriteSheet sheet = new SpriteSheet(img, 3, 1);
+						animations.put("swordman", sheet);
+					}else {
+						images.put(f.getName(), img);
+					}
+				}else if(f.getName().endsWith("ogg")) {
+					sounds.put(f.getName(), AudioLoader.getStreamingAudio("OGG", f.toURI().toURL()));
 				}
 			}
-		} catch (SlickException e) {
+		} catch (SlickException | IOException e) {
 			e.printStackTrace();
 		}
-		logger.printf(Level.INFO, "Done initializing resources (Loaded %d)", images.size());
+		logger.printf(Level.INFO, "Done initializing resources (Loaded %d images, %d animations, and %d sounds)", images.size(), animations.size(), sounds.size());
 	}
 	
 	public static Image read(File file) throws SlickException {
@@ -97,6 +111,11 @@ public class Resources {
 		return animations.get(string);
 	}
 
+	public static Audio getRandomAudio() {
+		Set<String> keys = sounds.keySet();
+		return sounds.get(keys.toArray()[random.nextInt(keys.size())]);
+	}
+	
 	public static void downloadIfNotExists(String fileName, String url, long expectedSize) {
 		downloadIfNotExists(new File("."), fileName, url, null, null, null, expectedSize);
 	}
